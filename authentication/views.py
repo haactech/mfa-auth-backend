@@ -11,16 +11,16 @@ from .serializers import (
     MFASetupSerializer, TrustedDeviceSerializer, SecurityAlertSerializer
 )
 from rest_framework.permissions import AllowAny
+from rest_framework_simplejwt.tokens import RefreshToken
 
 class LoginView(generics.GenericAPIView):
     serializer_class = LoginSerializer
     permission_classes = [AllowAny]
-    authentication_classes = []
 
     def post(self, request):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-
+        
         user = authenticate(
             username=serializer.validated_data['username'],
             password=serializer.validated_data['password']
@@ -28,34 +28,44 @@ class LoginView(generics.GenericAPIView):
 
         if not user:
             return Response(
-                {"error":"Invalid credentials"},
+                {'error': 'Invalid credentials'},
                 status=status.HTTP_401_UNAUTHORIZED
             )
-        
+
         if user.is_account_locked and user.account_locked_until > timezone.now():
             return Response(
-                {"error":"Account is locked.Please try again later."},
+                {'error': 'Account is locked. Please try again later.'},
                 status=status.HTTP_403_FORBIDDEN
             )
-        
+
+        # Record login attempt
         LoginAttempt.objects.create(
             user=user,
-            ip_address=request.META.get('REMOTE_ADDR', ''),
-            user_agent=request.META.get('HTTP_USER_AGENT', ''),
+            ip_address=request.META.get('REMOTE_ADDR'),
+            user_agent=request.META.get('HTTP_USER_AGENT'),
             was_successful=True
         )
 
+        # Generate tokens
+        refresh = RefreshToken.for_user(user)
+        tokens = {
+            'access': str(refresh.access_token),
+            'refresh': str(refresh)
+        }
+
         if user.is_mfa_enabled:
-            request.session["mfa_user_id"] = user.id 
+            request.session['mfa_user_id'] = user.id
             return Response({
-                "message": "MFA verification required",
-                "requires_mfa": True
+                'message': 'MFA verification required',
+                'requires_mfa': True,
+                'temp_token': str(refresh.access_token)  # Token temporal para verificación MFA
             })
-        
+
         login(request, user)
         return Response({
-            "user": UserSerializer(user).data,
-            "requires_mfa": False
+            'user': UserSerializer(user).data,
+            'requires_mfa': False,
+            'tokens': tokens
         })
     
 class VerifyMFAView(generics.GenericAPIView):
