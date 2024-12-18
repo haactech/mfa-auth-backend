@@ -1,5 +1,9 @@
 from rest_framework import serializers
 from django.contrib.auth import authenticate, get_user_model
+from django.core.validators import MinLengthValidator, RegexValidator
+from django.db import transaction
+from rest_framework_simplejwt.tokens import RefreshToken
+import pyotp
 from .models import TrustedDevice, SecurityAlert, MFAProfile
 
 User = get_user_model()
@@ -72,3 +76,43 @@ class MFAVerificationSerializer(serializers.Serializer):
     token = serializers.CharField(max_length=6, min_length=6)
     session_id = serializers.UUIDField()
     device_info = serializers.DictField(required=False)
+
+class RegistrationSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(
+        write_only=True,
+        required=True,
+        style={'input_type': 'password'},
+        min_length=8,
+        validators=[
+            MinLengthValidator(8),
+            RegexValidator(
+                regex=r'^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]',
+                message='Password must contain at least one letter, one number and one special character'
+            )
+        ]
+    )
+    password_confirm = serializers.CharField(write_only=True, required=True)
+    email = serializers.EmailField(required=True)
+
+    class Meta:
+        model = User 
+        fields = ('username', 'email', 'password', 'password_confirm')
+
+    def validate(self, attrs):
+        if attrs['password'] != attrs['password_confirm']:
+            raise serializers.ValidationError({'password_confirm':'Password do not match'})
+        
+        # Validar email único
+        if User.objects.filter(email=attrs['email']).exists():
+            raise serializers.ValidationError({'email': 'Email already registered'})
+        
+        #validar username único
+        if User.objects.filter(username=attrs['username']).exists():
+            raise serializers.ValidationError({'username':'Username already taken'})
+        
+        return attrs
+    
+    def create(self, validated_data):
+        validated_data.pop('password_confirm')
+        user = User.objects.create_user(**validated_data)
+        return user 

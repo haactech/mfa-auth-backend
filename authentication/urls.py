@@ -13,4 +13,5 @@ urlpatterns = [
     path('setup-mfa/', views.SetupMFAView.as_view(), name='setup-mfa'),
     path('disable-mfa/', views.disable_mfa, name='disable-mfa'),
     path('csrf/', views.get_csrf_token, name='csrf_token'),
+    path('register/', views.RegistrationView.as_view(), name='register')
 ]

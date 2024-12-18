@@ -4,8 +4,9 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth import get_user_model
+from django.db import transaction
 from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework.decorators import api_view
+import pyotp
 
 from django.middleware.csrf import get_token
 from django.views.decorators.csrf import ensure_csrf_cookie
@@ -13,21 +14,64 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 from .models import (
     AuthenticationSession, 
     TrustedDevice, 
-    SecurityAlert, 
-    LoginAttempt
+    SecurityAlert,
+    MFAProfile
 )
 from .serializers import (
     UserSerializer, 
     LoginSerializer, 
-    MFATokenSerializer,
     MFASetupSerializer, 
     TrustedDeviceSerializer, 
     SecurityAlertSerializer,
-    MFAVerificationSerializer
+    MFAVerificationSerializer,
+    RegistrationSerializer
 )
 from .services.mfa_service import MFASecurityService
 
 User = get_user_model()
+
+class RegistrationView(generics.GenericAPIView):
+    permission_classes = [AllowAny]
+    serializer_class = RegistrationSerializer
+
+    def post(self, request):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        try:
+            with transaction.atomic():
+                user = serializer.save()
+                
+                # Crear perfil MFA (desactivado inicialmente)
+                MFAProfile.objects.create(
+                    user=user,
+                    secret_key=pyotp.random_base32(),
+                    is_verified=False
+                )
+
+                # Generar tokens JWT
+                refresh = RefreshToken.for_user(user)
+                tokens = {
+                    'access': str(refresh.access_token),
+                    'refresh': str(refresh)
+                }
+
+                response_data = {
+                    'user': UserSerializer(user).data,
+                    'tokens': tokens,
+                    'message': 'Registration successful'
+                }
+
+                return Response(
+                    response_data,
+                    status=status.HTTP_201_CREATED
+                )
+
+        except Exception as e:
+            return Response(
+                {'error': 'Registration failed', 'detail': str(e)},
+                status=status.HTTP_400_BAD_REQUEST
+            )
 
 class LoginView(generics.GenericAPIView):
     permission_classes = [AllowAny]
