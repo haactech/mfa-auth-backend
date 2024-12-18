@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
 from django.core.validators import MinLengthValidator
+from django.utils import timezone 
+from datetime import timedelta
 import pyotp
 from django.conf import settings
 import uuid
@@ -119,3 +121,30 @@ class SecurityAlert(models.Model):
     resolved_at = models.DateTimeField(null=True, blank=True)
     resolution_notes = models.TextField(blank=True)
     related_ip = models.GenericIPAddressField(null=True, blank=True)
+    
+class AuthenticationSession(models.Model):
+    """Modelo para manejar sesiones temporales durante autenticación"""
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    session_id = models.UUIDField(default=uuid.uuid4, unique=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    expires_at = models.DateTimeField()
+    is_mfa_completed = models.BooleanField(default=False)
+    device_info = models.JSONField(null=True, blank=True)
+
+    def is_valid(self):
+        return (
+            not self.is_mfa_completed and 
+            self.expires_at > timezone.now()
+        )
+
+    def complete_mfa(self):
+        self.is_mfa_completed = True
+        self.save()
+
+    @classmethod
+    def create_session(cls, user, device_info=None, expiry_minutes=5):
+        return cls.objects.create(
+            user=user,
+            device_info=device_info,
+            expires_at=timezone.now() + timedelta(minutes=expiry_minutes)
+        )

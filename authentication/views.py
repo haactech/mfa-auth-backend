@@ -11,7 +11,7 @@ from django.middleware.csrf import get_token
 from django.views.decorators.csrf import ensure_csrf_cookie
 
 from .models import (
-    MFAProfile, 
+    AuthenticationSession, 
     TrustedDevice, 
     SecurityAlert, 
     LoginAttempt
@@ -22,7 +22,8 @@ from .serializers import (
     MFATokenSerializer,
     MFASetupSerializer, 
     TrustedDeviceSerializer, 
-    SecurityAlertSerializer
+    SecurityAlertSerializer,
+    MFAVerificationSerializer
 )
 from .services.mfa_service import MFASecurityService
 
@@ -37,26 +38,29 @@ class LoginView(generics.GenericAPIView):
         serializer.is_valid(raise_exception=True)
         
         user = serializer.validated_data['user']
-        user.refresh_from_db() 
-        login(request, user)  
+        user.refresh_from_db()
+
+        # Crear sesión temporal
+        device_info = {
+            'ip': request.META.get('REMOTE_ADDR'),
+            'user_agent': request.META.get('HTTP_USER_AGENT')
+        }
+        auth_session = AuthenticationSession.create_session(
+            user=user,
+            device_info=device_info
+        )
 
         if user.is_mfa_enabled:
-            request.session['mfa_user_id'] = user.id
-            request.session['mfa_session_active'] = True
-            request.session.modified = True  # Forzar guardado de sesión
-            
-            temp_token = RefreshToken.for_user(user)
-            
             return Response({
                 'requires_mfa': True,
-                'user': UserSerializer(user).data,
-                'tokens': {
-                    'access': str(temp_token.access_token)
-                }
+                'session_id': auth_session.session_id,
+                'user': UserSerializer(user).data
             })
 
-        # Login normal sin MFA
+        # Usuario sin MFA, completar sesión y generar tokens
+        auth_session.complete_mfa()
         refresh = RefreshToken.for_user(user)
+        
         return Response({
             'requires_mfa': False,
             'user': UserSerializer(user).data,
@@ -71,6 +75,12 @@ class SetupMFAView(generics.GenericAPIView):
 
     def get(self, request):
         """Iniciar configuración MFA"""
+        if request.user.is_mfa_enabled:
+            return Response(
+                {'error': 'MFA already configured'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
         mfa_service = MFASecurityService(request.user)
         setup_data = mfa_service.setup_mfa()
         
@@ -82,6 +92,12 @@ class SetupMFAView(generics.GenericAPIView):
 
     def post(self, request):
         """Verificar y activar MFA"""
+        if request.user.is_mfa_enabled:
+            return Response(
+                {'error': 'MFA already configured'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
@@ -97,6 +113,10 @@ class SetupMFAView(generics.GenericAPIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
+        # Activar MFA
+        request.user.is_mfa_enabled = True
+        request.user.save()
+
         # Generar códigos de respaldo
         backup_codes = mfa_service.generate_backup_codes()
 
@@ -108,36 +128,42 @@ class SetupMFAView(generics.GenericAPIView):
         })
 
 class VerifyMFAView(generics.GenericAPIView):
-    serializer_class = MFATokenSerializer
+    serializer_class = MFAVerificationSerializer
     permission_classes = [AllowAny]
+
+    def get_client_ip(self, request):
+        """Obtaining ips even with proxies"""
+        x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+        if x_forwarded_for:
+            ip = x_forwarded_for.split(',')[0]
+        else:
+            ip = request.META.get('REMOTE_ADDR')
+        return ip or '0.0.0.0'
 
     def post(self, request):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
-        # Obtener el token del header de autorización
-        auth_header = request.headers.get('Authorization')
-        if not auth_header or not auth_header.startswith('Bearer '):
-            return Response(
-                {'error': 'Invalid authorization header'},
-                status=status.HTTP_401_UNAUTHORIZED
-            )
-        
-        token = auth_header.split(' ')[1]
-        
         try:
-            # Decodificar el token temporal para obtener el user_id
-            from rest_framework_simplejwt.tokens import AccessToken
-            decoded_token = AccessToken(token)
-            user_id = decoded_token['user_id']
-            
-            user = User.objects.get(id=user_id)
+            auth_session = AuthenticationSession.objects.get(
+                session_id=serializer.validated_data['session_id']
+            )
+
+            if not auth_session.is_valid():
+                return Response(
+                    {'error': 'Session expired or invalid'},
+                    status=status.HTTP_401_UNAUTHORIZED
+                )
+
+            user = auth_session.user
             mfa_service = MFASecurityService(user)
 
-            # Verificar el token MFA
+            device_info = serializer.validated_data.get('device_info',{})
+            device_info['ip_address'] = self.get_client_ip(request)
+
             is_valid, error = mfa_service.verify_token(
                 serializer.validated_data['token'],
-                serializer.validated_data.get('request_meta', {})
+                device_info
             )
 
             if not is_valid:
@@ -145,10 +171,11 @@ class VerifyMFAView(generics.GenericAPIView):
                     {'error': error or 'Invalid token'},
                     status=status.HTTP_401_UNAUTHORIZED
                 )
-            
-            user.refresh_from_db()
 
-            # Generar tokens finales
+            # MFA verificado exitosamente
+            auth_session.complete_mfa()
+            
+            # Generar tokens JWT finales
             refresh = RefreshToken.for_user(user)
             tokens = {
                 'access': str(refresh.access_token),
@@ -161,9 +188,9 @@ class VerifyMFAView(generics.GenericAPIView):
                 'tokens': tokens
             })
 
-        except (User.DoesNotExist, Exception) as e:
+        except AuthenticationSession.DoesNotExist:
             return Response(
-                {'error': str(e)},
+                {'error': 'Invalid session'},
                 status=status.HTTP_400_BAD_REQUEST
             )
         

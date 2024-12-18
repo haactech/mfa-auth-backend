@@ -61,3 +61,14 @@ class SecurityAlertSerializer(serializers.ModelSerializer):
         model = SecurityAlert
         fields = ('id', 'timestamp', 'alert_type', 'severity', 'message', 'is_resolved')
         read_only_fields = ('id', 'timestamp')
+
+class LoginResponseSerializer(serializers.Serializer):
+    requires_mfa = serializers.BooleanField()
+    session_id = serializers.UUIDField(required=False)
+    user = UserSerializer()
+    tokens = serializers.DictField(required=False)
+
+class MFAVerificationSerializer(serializers.Serializer):
+    token = serializers.CharField(max_length=6, min_length=6)
+    session_id = serializers.UUIDField()
+    device_info = serializers.DictField(required=False)

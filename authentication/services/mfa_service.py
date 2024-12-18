@@ -11,7 +11,7 @@ class MFASecurityService:
     """
     Service class for handling MFA-related operations and security checks
     """
-    MAX_FAILTED_ATTEMPTS = 3
+    MAX_FAILED_ATTEMPTS = 3
     LOCK_DURATION = timedelta(minutes=30)
 
     def __init__(self, user):
@@ -117,8 +117,8 @@ class MFASecurityService:
         """Record MFA verification attempt"""
         LoginAttempt.objects.create(
             user=self.user,
-            ip_address=ip_address,
-            user_agent=user_agent,
+            ip_address=ip_address or "0.0.0.0",
+            user_agent=user_agent or 'Unknown',
             was_successful=was_successful,
             failure_reason='Invalid MFA token' if not was_successful else ''
         )
