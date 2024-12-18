@@ -37,6 +37,7 @@ class LoginView(generics.GenericAPIView):
         serializer.is_valid(raise_exception=True)
         
         user = serializer.validated_data['user']
+        user.refresh_from_db() 
         login(request, user)  
 
         if user.is_mfa_enabled:
@@ -144,6 +145,8 @@ class VerifyMFAView(generics.GenericAPIView):
                     {'error': error or 'Invalid token'},
                     status=status.HTTP_401_UNAUTHORIZED
                 )
+            
+            user.refresh_from_db()
 
             # Generar tokens finales
             refresh = RefreshToken.for_user(user)

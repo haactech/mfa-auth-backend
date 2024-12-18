@@ -83,6 +83,10 @@ class MFASecurityService:
             self._handle_failed_attempt()
             return False, "Invalid token"
         
+        if not self.user.is_mfa_enabled:
+            self.user.is_mfa_enabled = True 
+            self.user.save()
+        
         return True, None 
     
     def _is_account_locked(self) -> bool:
