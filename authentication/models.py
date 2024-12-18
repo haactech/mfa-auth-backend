@@ -15,7 +15,7 @@ class User(AbstractUser):
     last_login_attempt = models.DateTimeField(null=True, blank=True)
     failed_login_attempts = models.PositiveIntegerField(default=0)
     is_account_locked = models.BooleanField(default=False)
-    account_locked_until = models.DateTimeField
+    account_locked_until = models.DateTimeField(null=True, blank=True)
 
     class Meta:
         verbose_name = _("user")
