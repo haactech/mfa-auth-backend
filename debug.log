@@ -3,3 +3,26 @@ INFO 2024-12-19 06:36:04,518 autoreload /Users/hermesadanaguilarcamacho/developm
 INFO 2024-12-19 06:36:04,719 autoreload Watching for file changes with StatReloader
 INFO 2024-12-19 06:36:16,948 autoreload Watching for file changes with StatReloader
 INFO 2024-12-19 06:36:25,478 email_service Verification email would be sent to test2@example.com with token 19ca673b-725c-4ce9-897c-c86acde2f174
+INFO 2024-12-19 06:38:11,019 autoreload Watching for file changes with StatReloader
+INFO 2024-12-19 14:44:24,925 autoreload Watching for file changes with StatReloader
+WARNING 2024-12-19 15:28:19,127 log Unauthorized: /api/auth/csrf/
+INFO 2024-12-19 15:28:19,328 email_service Verification email would be sent to adanhermes23@gmail.com with token 919be399-a349-4fd5-b591-922b3cb035e3
+WARNING 2024-12-19 15:30:00,643 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-19 15:30:00,833 log Bad Request: /api/auth/login/
+WARNING 2024-12-19 15:36:19,472 log Bad Request: /api/auth/verify-email/919be399-a349-4fd5-b591-922b3cb035e3/
+WARNING 2024-12-19 15:36:44,090 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-19 15:39:56,166 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-19 15:40:15,438 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-19 15:40:53,971 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-19 16:59:34,683 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-19 16:59:34,874 log Bad Request: /api/auth/login/
+WARNING 2024-12-19 16:59:46,115 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-19 16:59:46,318 log Bad Request: /api/auth/login/
+WARNING 2024-12-19 16:59:51,068 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-19 16:59:51,258 log Bad Request: /api/auth/login/
+WARNING 2024-12-19 16:59:57,033 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-19 16:59:57,233 log Bad Request: /api/auth/login/
+WARNING 2024-12-19 17:04:30,339 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-19 17:04:30,516 log Bad Request: /api/auth/login/
+WARNING 2024-12-19 17:04:39,359 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-19 23:24:15,104 log Unauthorized: /api/auth/csrf/
