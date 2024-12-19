@@ -7,6 +7,7 @@ from django.contrib.auth import get_user_model
 from django.db import transaction
 from rest_framework_simplejwt.tokens import RefreshToken
 import pyotp
+from .services.email_service import EmailService
 
 from django.middleware.csrf import get_token
 from django.views.decorators.csrf import ensure_csrf_cookie
@@ -15,7 +16,8 @@ from .models import (
     AuthenticationSession, 
     TrustedDevice, 
     SecurityAlert,
-    MFAProfile
+    MFAProfile,
+    EmailVerification
 )
 from .serializers import (
     UserSerializer, 
@@ -24,54 +26,57 @@ from .serializers import (
     TrustedDeviceSerializer, 
     SecurityAlertSerializer,
     MFAVerificationSerializer,
-    RegistrationSerializer
+    SignupSerializer
 )
 from .services.mfa_service import MFASecurityService
 
 User = get_user_model()
 
-class RegistrationView(generics.GenericAPIView):
+class SignupView(generics.CreateAPIView):
     permission_classes = [AllowAny]
-    serializer_class = RegistrationSerializer
+    serializer_class = SignupSerializer
 
-    def post(self, request):
+    @transaction.atomic
+    def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
-        try:
-            with transaction.atomic():
-                user = serializer.save()
-                
-                # Crear perfil MFA (desactivado inicialmente)
-                MFAProfile.objects.create(
-                    user=user,
-                    secret_key=pyotp.random_base32(),
-                    is_verified=False
-                )
+        #Crear usuario
+        user = User.objects.create_user(
+            username=serializer.validated_data['username'],
+            email=serializer.validated_data['email'],
+            password=serializer.validated_data['password'],
+            is_active=False
+        )
 
-                # Generar tokens JWT
-                refresh = RefreshToken.for_user(user)
-                tokens = {
-                    'access': str(refresh.access_token),
-                    'refresh': str(refresh)
-                }
+        verification = EmailVerification.objects.create(user=user)
 
-                response_data = {
-                    'user': UserSerializer(user).data,
-                    'tokens': tokens,
-                    'message': 'Registration successful'
-                }
+        EmailService.send_verification_email(user, verification.token)
 
-                return Response(
-                    response_data,
-                    status=status.HTTP_201_CREATED
-                )
+        return Response({
+            'message': 'Registration successful. Please check your email to verify your account.',
+            'username': user.username,
+            'email': user.email
+        }, status=status.HTTP_201_CREATED)
+    
+@api_view(['GET'])
+@permission_classes([AllowAny])
 
-        except Exception as e:
-            return Response(
-                {'error': 'Registration failed', 'detail': str(e)},
-                status=status.HTTP_400_BAD_REQUEST
-            )
+def verify_email(request, token):
+    try:
+        verification = EmailVerification.objects.get(token=token, is_verified=False)
+        
+        # Verificar y activar usuario
+        verification.verify()
+        
+        return Response({
+            'message': 'Email verified successfully. You can now login.',
+        })
+    except EmailVerification.DoesNotExist:
+        return Response({
+            'error': 'Invalid or expired verification token'
+        }, status=status.HTTP_400_BAD_REQUEST)
+
 
 class LoginView(generics.GenericAPIView):
     permission_classes = [AllowAny]

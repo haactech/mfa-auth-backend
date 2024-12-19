@@ -1,0 +1,5 @@
+INFO 2024-12-19 06:36:00,267 autoreload Watching for file changes with StatReloader
+INFO 2024-12-19 06:36:04,518 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/core/settings.py changed, reloading.
+INFO 2024-12-19 06:36:04,719 autoreload Watching for file changes with StatReloader
+INFO 2024-12-19 06:36:16,948 autoreload Watching for file changes with StatReloader
+INFO 2024-12-19 06:36:25,478 email_service Verification email would be sent to test2@example.com with token 19ca673b-725c-4ce9-897c-c86acde2f174

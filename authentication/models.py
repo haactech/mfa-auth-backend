@@ -148,3 +148,18 @@ class AuthenticationSession(models.Model):
             device_info=device_info,
             expires_at=timezone.now() + timedelta(minutes=expiry_minutes)
         )
+    
+class EmailVerification(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    token = models.UUIDField(default=uuid.uuid4(), editable=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    verified_at = models.DateTimeField(null=True, blank=True)
+    is_verified = models.BooleanField(default=False)
+
+    def verify(self):
+        self.is_verified = True 
+        self.verified_at = timezone.now()
+        self.save()
+
+        self.user.is_active = True
+        self.user.save()
