@@ -3,14 +3,15 @@
 # Esperar unos segundos para asegurarnos de que todo está listo
 sleep 2
 
-# Aplicar migraciones
+#!/bin/bash
+
 echo "Applying database migrations..."
+python manage.py makemigrations authentication
 python manage.py migrate
 
-# Recolectar archivos estáticos
 echo "Collecting static files..."
+mkdir -p staticfiles
 python manage.py collectstatic --noinput
 
-# Iniciar Gunicorn
-echo "Starting Gunicorn..."
-gunicorn --bind 0.0.0.0:8000 core.wsgi:application
+echo "Starting Gunicorn server..."
+gunicorn core.wsgi:application --bind 0.0.0.0:8000

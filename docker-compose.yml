@@ -3,6 +3,7 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
+    image: creze-mfa-backend:latest
     ports:
       - "8000:8000"
     volumes:
