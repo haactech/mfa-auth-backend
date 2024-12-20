@@ -38,7 +38,7 @@ SECRET_KEY = 'django-insecure-*_y^icn=*hrv%nh*(x0fr=s5v7^(5x!njgm3@gls2y_@x=d%3s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '10.0.10.181','http://api.hermesagc.com','54.172.155.213']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '10.0.10.181','api.hermesagc.com','hermesagc.com']
 
 # Application definition
 
