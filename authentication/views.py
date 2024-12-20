@@ -191,42 +191,6 @@ class SetupMFAView(generics.GenericAPIView):
             'warning': 'Save these backup codes securely. They will not be shown again.'
         })
     
-@api_view(['GET'])
-@permission_classes([AllowAny])
-def test_email_config(request):
-    try:
-        # Crear una instancia del servicio de email
-        email_service = EmailService()
-        
-        # Intentar enviar un email de prueba
-        success = email_service.send_email(
-            to_email="adanhermes23@gmail.com",  # Reemplaza con tu email
-            subject="Test Email Configuration",
-            template_name="account_verification",  # Usa una de las plantillas que creamos
-            context={
-                "user": {"username": "TestUser"},
-                "verification_url": "http://example.com",
-                "site_name": "Test Site"
-            }
-        )
-        
-        if success:
-            return JsonResponse({
-                "status": "success",
-                "message": "Email sent successfully"
-            })
-        else:
-            return JsonResponse({
-                "status": "error",
-                "message": "Failed to send email"
-            }, status=500)
-            
-    except Exception as e:
-        return JsonResponse({
-            "status": "error",
-            "message": str(e)
-        }, status=500)
-
 class VerifyMFAView(generics.GenericAPIView):
     serializer_class = MFAVerificationSerializer
     permission_classes = [AllowAny]
@@ -307,6 +271,32 @@ class SecurityAlertViewSet(viewsets.ReadOnlyModelViewSet):
 
     def get_queryset(self):
         return SecurityAlert.objects.filter(user=self.request.user)
+    
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def logout_view(request):
+    try:
+        auth_header = request.headers.get('Authorization')
+        if auth_header and auth_header.startswith('Bearer '):
+            token = auth_header.split(' ')[1]
+            try:
+                token = RefreshToken(token)
+                token.blacklist()
+            except Exception:
+                pass  
+        
+        AuthenticationSession.objects.filter(user=request.user).delete()
+        
+        TrustedDevice.objects.filter(user=request.user, is_active=True).update(is_active=False)
+        
+        return Response({
+            "message": "Logged out successfully"
+        }, status=status.HTTP_200_OK)
+    
+    except Exception as e:
+        return Response({
+            "error":"Logout failed"
+        }, status=status.HTTP_400_BAD_REQUEST)
 
 @ensure_csrf_cookie
 @api_view(['GET'])

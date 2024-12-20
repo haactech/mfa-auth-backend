@@ -178,3 +178,28 @@ INFO 2024-12-20 22:50:21,761 autoreload /Users/hermesadanaguilarcamacho/developm
 INFO 2024-12-20 22:50:22,057 autoreload Watching for file changes with StatReloader
 INFO 2024-12-20 22:50:51,329 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/authentication/views.py changed, reloading.
 INFO 2024-12-20 22:50:51,534 autoreload Watching for file changes with StatReloader
+INFO 2024-12-20 22:55:19,820 autoreload Watching for file changes with StatReloader
+WARNING 2024-12-20 22:56:42,911 log Bad Request: /api/auth/login/
+WARNING 2024-12-20 22:56:49,562 log Bad Request: /api/auth/login/
+WARNING 2024-12-20 22:56:53,913 log Bad Request: /api/auth/login/
+INFO 2024-12-20 23:02:33,423 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/authentication/serializers.py changed, reloading.
+INFO 2024-12-20 23:02:33,719 autoreload Watching for file changes with StatReloader
+INFO 2024-12-20 23:02:42,233 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/authentication/serializers.py changed, reloading.
+INFO 2024-12-20 23:02:42,445 autoreload Watching for file changes with StatReloader
+INFO 2024-12-20 23:03:12,714 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/authentication/serializers.py changed, reloading.
+INFO 2024-12-20 23:03:12,906 autoreload Watching for file changes with StatReloader
+INFO 2024-12-20 23:04:49,509 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/authentication/serializers.py changed, reloading.
+INFO 2024-12-20 23:04:49,801 autoreload Watching for file changes with StatReloader
+INFO 2024-12-20 23:05:08,730 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/authentication/serializers.py changed, reloading.
+INFO 2024-12-20 23:05:08,937 autoreload Watching for file changes with StatReloader
+WARNING 2024-12-20 23:06:07,270 log Bad Request: /api/auth/signup/
+WARNING 2024-12-20 23:07:47,796 log Bad Request: /api/auth/signup/
+INFO 2024-12-20 23:15:25,108 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/authentication/views.py changed, reloading.
+INFO 2024-12-20 23:15:25,371 autoreload Watching for file changes with StatReloader
+INFO 2024-12-20 23:16:07,810 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/authentication/views.py changed, reloading.
+INFO 2024-12-20 23:16:08,012 autoreload Watching for file changes with StatReloader
+INFO 2024-12-20 23:16:55,992 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/authentication/urls.py changed, reloading.
+INFO 2024-12-20 23:16:56,213 autoreload Watching for file changes with StatReloader
+WARNING 2024-12-20 23:18:28,759 log Not Found: /api/auth/logout/
+INFO 2024-12-20 23:18:44,460 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/authentication/urls.py changed, reloading.
+INFO 2024-12-20 23:18:44,741 autoreload Watching for file changes with StatReloader
