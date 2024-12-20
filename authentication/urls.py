@@ -14,5 +14,6 @@ urlpatterns = [
     path('disable-mfa/', views.disable_mfa, name='disable-mfa'),
     path('csrf/', views.get_csrf_token, name='csrf_token'),
     path('signup/', views.SignupView.as_view(), name='signup'),
-    path('verify-email/<uuid:token>/', views.verify_email, name='verify-email')
+    path('verify-email/<uuid:token>/', views.verify_email, name='verify-email'),
+    path('test-email/', views.test_email_config, name='test-email')
 ]

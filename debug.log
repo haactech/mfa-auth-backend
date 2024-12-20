@@ -1,28 +1,27 @@
-INFO 2024-12-19 06:36:00,267 autoreload Watching for file changes with StatReloader
-INFO 2024-12-19 06:36:04,518 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/core/settings.py changed, reloading.
-INFO 2024-12-19 06:36:04,719 autoreload Watching for file changes with StatReloader
-INFO 2024-12-19 06:36:16,948 autoreload Watching for file changes with StatReloader
-INFO 2024-12-19 06:36:25,478 email_service Verification email would be sent to test2@example.com with token 19ca673b-725c-4ce9-897c-c86acde2f174
-INFO 2024-12-19 06:38:11,019 autoreload Watching for file changes with StatReloader
-INFO 2024-12-19 14:44:24,925 autoreload Watching for file changes with StatReloader
-WARNING 2024-12-19 15:28:19,127 log Unauthorized: /api/auth/csrf/
-INFO 2024-12-19 15:28:19,328 email_service Verification email would be sent to adanhermes23@gmail.com with token 919be399-a349-4fd5-b591-922b3cb035e3
-WARNING 2024-12-19 15:30:00,643 log Unauthorized: /api/auth/csrf/
-WARNING 2024-12-19 15:30:00,833 log Bad Request: /api/auth/login/
-WARNING 2024-12-19 15:36:19,472 log Bad Request: /api/auth/verify-email/919be399-a349-4fd5-b591-922b3cb035e3/
-WARNING 2024-12-19 15:36:44,090 log Unauthorized: /api/auth/csrf/
-WARNING 2024-12-19 15:39:56,166 log Unauthorized: /api/auth/csrf/
-WARNING 2024-12-19 15:40:15,438 log Unauthorized: /api/auth/csrf/
-WARNING 2024-12-19 15:40:53,971 log Unauthorized: /api/auth/csrf/
-WARNING 2024-12-19 16:59:34,683 log Unauthorized: /api/auth/csrf/
-WARNING 2024-12-19 16:59:34,874 log Bad Request: /api/auth/login/
-WARNING 2024-12-19 16:59:46,115 log Unauthorized: /api/auth/csrf/
-WARNING 2024-12-19 16:59:46,318 log Bad Request: /api/auth/login/
-WARNING 2024-12-19 16:59:51,068 log Unauthorized: /api/auth/csrf/
-WARNING 2024-12-19 16:59:51,258 log Bad Request: /api/auth/login/
-WARNING 2024-12-19 16:59:57,033 log Unauthorized: /api/auth/csrf/
-WARNING 2024-12-19 16:59:57,233 log Bad Request: /api/auth/login/
-WARNING 2024-12-19 17:04:30,339 log Unauthorized: /api/auth/csrf/
-WARNING 2024-12-19 17:04:30,516 log Bad Request: /api/auth/login/
-WARNING 2024-12-19 17:04:39,359 log Unauthorized: /api/auth/csrf/
-WARNING 2024-12-19 23:24:15,104 log Unauthorized: /api/auth/csrf/
+INFO 2024-12-20 00:20:39,586 autoreload Watching for file changes with StatReloader
+WARNING 2024-12-20 00:20:49,382 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-20 00:21:44,495 log Unauthorized: /api/auth/csrf/
+ERROR 2024-12-20 00:21:45,096 email_service Failed to send email to hermesaguilar@icloud.com. Error: The security token included in the request is invalid., Code: InvalidClientTokenId
+WARNING 2024-12-20 01:23:22,691 log Unauthorized: /api/auth/csrf/
+ERROR 2024-12-20 01:23:23,302 email_service Failed to send email to hermesaguilar@icloud.com. Error: The security token included in the request is invalid., Code: InvalidClientTokenId
+INFO 2024-12-20 01:25:17,676 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/core/settings.py changed, reloading.
+INFO 2024-12-20 01:25:18,013 autoreload Watching for file changes with StatReloader
+INFO 2024-12-20 01:25:24,375 autoreload Watching for file changes with StatReloader
+INFO 2024-12-20 01:28:56,727 autoreload Watching for file changes with StatReloader
+WARNING 2024-12-20 01:29:32,243 log Unauthorized: /api/auth/csrf/
+ERROR 2024-12-20 01:29:32,821 email_service Failed to send email to adanhermes23@gmail.com. Error: Email address is not verified. The following identities failed the check in region US-EAST-1: adanhermes23@gmail.com, preguntaderecho@gmail.com, Code: MessageRejected
+WARNING 2024-12-20 01:31:06,519 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-20 01:31:06,528 log Bad Request: /api/auth/signup/
+WARNING 2024-12-20 01:31:20,911 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-20 01:31:20,918 log Bad Request: /api/auth/signup/
+WARNING 2024-12-20 01:31:37,269 log Unauthorized: /api/auth/csrf/
+ERROR 2024-12-20 01:31:37,847 email_service Failed to send email to preguntaderecho@gmail.com. Error: Email address is not verified. The following identities failed the check in region US-EAST-1: preguntaderecho@gmail.com, Code: MessageRejected
+WARNING 2024-12-20 01:32:40,012 log Unauthorized: /api/auth/csrf/
+ERROR 2024-12-20 01:32:40,542 email_service Failed to send email to preguntamederecho@gmail.com. Error: Email address is not verified. The following identities failed the check in region US-EAST-1: preguntaderecho@gmail.com, Code: MessageRejected
+INFO 2024-12-20 01:37:33,167 autoreload Watching for file changes with StatReloader
+INFO 2024-12-20 01:37:50,271 autoreload Watching for file changes with StatReloader
+WARNING 2024-12-20 01:38:15,643 log Unauthorized: /api/auth/csrf/
+ERROR 2024-12-20 01:38:16,279 email_service Failed to send email to adanhermes23@gmail.com. Error: Email address is not verified. The following identities failed the check in region US-EAST-1: preguntaderecho@gmail.com, Code: MessageRejected
+INFO 2024-12-20 01:38:51,398 autoreload Watching for file changes with StatReloader
+WARNING 2024-12-20 01:39:15,315 log Unauthorized: /api/auth/csrf/
+INFO 2024-12-20 01:39:15,995 email_service Email sent successfully to adanhermes23@gmail.com. MessageId: 01000193e1b80d3f-bb9b9fd4-a68d-44bf-ab46-249fe69bf579-000000

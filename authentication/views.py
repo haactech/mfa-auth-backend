@@ -6,7 +6,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth import get_user_model
 from django.db import transaction
 from rest_framework_simplejwt.tokens import RefreshToken
-import pyotp
+from .services.email_service import EmailService
+from django.http import JsonResponse
 from .services.email_service import EmailService
 
 from django.middleware.csrf import get_token
@@ -175,6 +176,42 @@ class SetupMFAView(generics.GenericAPIView):
             'backup_codes': backup_codes,
             'warning': 'Save these backup codes securely. They will not be shown again.'
         })
+    
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def test_email_config(request):
+    try:
+        # Crear una instancia del servicio de email
+        email_service = EmailService()
+        
+        # Intentar enviar un email de prueba
+        success = email_service.send_email(
+            to_email="adanhermes23@gmail.com",  # Reemplaza con tu email
+            subject="Test Email Configuration",
+            template_name="account_verification",  # Usa una de las plantillas que creamos
+            context={
+                "user": {"username": "TestUser"},
+                "verification_url": "http://example.com",
+                "site_name": "Test Site"
+            }
+        )
+        
+        if success:
+            return JsonResponse({
+                "status": "success",
+                "message": "Email sent successfully"
+            })
+        else:
+            return JsonResponse({
+                "status": "error",
+                "message": "Failed to send email"
+            }, status=500)
+            
+    except Exception as e:
+        return JsonResponse({
+            "status": "error",
+            "message": str(e)
+        }, status=500)
 
 class VerifyMFAView(generics.GenericAPIView):
     serializer_class = MFAVerificationSerializer
