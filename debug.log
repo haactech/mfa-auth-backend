@@ -67,3 +67,4 @@ WARNING 2024-12-20 04:16:05,417 log Unauthorized: /api/auth/csrf/
 INFO 2024-12-20 04:16:06,074 email_service Email sent successfully to adanhermes23@gmail.com. MessageId: 01000193e247a3a3-0f2b780b-1f9f-4a12-979a-d53ead5eef76-000000
 WARNING 2024-12-20 04:23:29,348 log Unauthorized: /api/auth/csrf/
 INFO 2024-12-20 04:23:30,002 email_service Email sent successfully to hermesaguilar@icloud.com. MessageId: 01000193e24e69cc-00462db8-20b1-481a-97c8-89d58384e8fc-000000
+INFO 2024-12-20 05:08:00,573 autoreload Watching for file changes with StatReloader

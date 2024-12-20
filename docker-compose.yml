@@ -1,13 +1,13 @@
 services:
   web:
-    build: .
+    image: ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/creze-mfa-backend:1.0.0
     ports:
       - "8000:8000"
     volumes:
-      - .:/app
       - sqlite_data:/app/data
     env_file:
       - .env
+    restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health/"]
       interval: 30s
