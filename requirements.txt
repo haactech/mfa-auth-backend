@@ -6,3 +6,14 @@ python-dotenv==1.0.0
 djangorestframework-simplejwt==5.3.1
 qrcode==8.0 
 pillow== 11.0.0
+# AWS dependencies
+boto3==1.34.7
+botocore==1.34.7
+
+# Email dependencies
+django-ses==3.5.0
+
+# Production requirements
+gunicorn==21.2.0
+whitenoise==6.6.0  # for serving static files
+python-decouple==3.8

@@ -1,0 +1,69 @@
+INFO 2024-12-20 00:20:39,586 autoreload Watching for file changes with StatReloader
+WARNING 2024-12-20 00:20:49,382 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-20 00:21:44,495 log Unauthorized: /api/auth/csrf/
+ERROR 2024-12-20 00:21:45,096 email_service Failed to send email to hermesaguilar@icloud.com. Error: The security token included in the request is invalid., Code: InvalidClientTokenId
+WARNING 2024-12-20 01:23:22,691 log Unauthorized: /api/auth/csrf/
+ERROR 2024-12-20 01:23:23,302 email_service Failed to send email to hermesaguilar@icloud.com. Error: The security token included in the request is invalid., Code: InvalidClientTokenId
+INFO 2024-12-20 01:25:17,676 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/core/settings.py changed, reloading.
+INFO 2024-12-20 01:25:18,013 autoreload Watching for file changes with StatReloader
+INFO 2024-12-20 01:25:24,375 autoreload Watching for file changes with StatReloader
+INFO 2024-12-20 01:28:56,727 autoreload Watching for file changes with StatReloader
+WARNING 2024-12-20 01:29:32,243 log Unauthorized: /api/auth/csrf/
+ERROR 2024-12-20 01:29:32,821 email_service Failed to send email to adanhermes23@gmail.com. Error: Email address is not verified. The following identities failed the check in region US-EAST-1: adanhermes23@gmail.com, preguntaderecho@gmail.com, Code: MessageRejected
+WARNING 2024-12-20 01:31:06,519 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-20 01:31:06,528 log Bad Request: /api/auth/signup/
+WARNING 2024-12-20 01:31:20,911 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-20 01:31:20,918 log Bad Request: /api/auth/signup/
+WARNING 2024-12-20 01:31:37,269 log Unauthorized: /api/auth/csrf/
+ERROR 2024-12-20 01:31:37,847 email_service Failed to send email to preguntaderecho@gmail.com. Error: Email address is not verified. The following identities failed the check in region US-EAST-1: preguntaderecho@gmail.com, Code: MessageRejected
+WARNING 2024-12-20 01:32:40,012 log Unauthorized: /api/auth/csrf/
+ERROR 2024-12-20 01:32:40,542 email_service Failed to send email to preguntamederecho@gmail.com. Error: Email address is not verified. The following identities failed the check in region US-EAST-1: preguntaderecho@gmail.com, Code: MessageRejected
+INFO 2024-12-20 01:37:33,167 autoreload Watching for file changes with StatReloader
+INFO 2024-12-20 01:37:50,271 autoreload Watching for file changes with StatReloader
+WARNING 2024-12-20 01:38:15,643 log Unauthorized: /api/auth/csrf/
+ERROR 2024-12-20 01:38:16,279 email_service Failed to send email to adanhermes23@gmail.com. Error: Email address is not verified. The following identities failed the check in region US-EAST-1: preguntaderecho@gmail.com, Code: MessageRejected
+INFO 2024-12-20 01:38:51,398 autoreload Watching for file changes with StatReloader
+WARNING 2024-12-20 01:39:15,315 log Unauthorized: /api/auth/csrf/
+INFO 2024-12-20 01:39:15,995 email_service Email sent successfully to adanhermes23@gmail.com. MessageId: 01000193e1b80d3f-bb9b9fd4-a68d-44bf-ab46-249fe69bf579-000000
+INFO 2024-12-20 04:03:34,702 autoreload Watching for file changes with StatReloader
+INFO 2024-12-20 04:04:19,424 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/authentication/views.py changed, reloading.
+INFO 2024-12-20 04:04:19,736 autoreload Watching for file changes with StatReloader
+INFO 2024-12-20 04:04:23,029 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/authentication/views.py changed, reloading.
+INFO 2024-12-20 04:04:23,223 autoreload Watching for file changes with StatReloader
+WARNING 2024-12-20 04:06:55,154 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-20 04:06:55,346 log Bad Request: /api/auth/login/
+WARNING 2024-12-20 04:07:11,242 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-20 04:07:11,433 log Bad Request: /api/auth/login/
+WARNING 2024-12-20 04:07:15,390 log Not Found: /health/
+WARNING 2024-12-20 04:07:15,410 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-20 04:07:15,707 log Bad Request: /api/auth/login/
+WARNING 2024-12-20 04:07:21,871 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-20 04:07:22,072 log Bad Request: /api/auth/login/
+WARNING 2024-12-20 04:07:35,455 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-20 04:07:35,667 log Bad Request: /api/auth/login/
+WARNING 2024-12-20 04:07:40,338 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-20 04:07:40,537 log Bad Request: /api/auth/login/
+WARNING 2024-12-20 04:07:45,428 log Not Found: /health/
+WARNING 2024-12-20 04:08:00,637 log Unauthorized: /api/auth/csrf/
+INFO 2024-12-20 04:08:01,294 email_service Email sent successfully to adanhermes23@gmail.com. MessageId: 01000193e2403df1-31b26790-4c50-4c27-9bdc-67a063c6a79c-000000
+WARNING 2024-12-20 04:08:15,475 log Not Found: /health/
+WARNING 2024-12-20 04:08:45,556 log Not Found: /health/
+WARNING 2024-12-20 04:09:15,635 log Not Found: /health/
+WARNING 2024-12-20 04:09:16,649 log Unauthorized: /api/auth/csrf/
+INFO 2024-12-20 04:09:17,195 email_service Email sent successfully to preguntamederecho@gmail.com. MessageId: 01000193e241667b-3d2bf262-ae4e-4502-aa85-3b6e2159d573-000000
+WARNING 2024-12-20 04:09:45,699 log Not Found: /health/
+WARNING 2024-12-20 04:10:15,783 log Not Found: /health/
+WARNING 2024-12-20 04:10:45,858 log Not Found: /health/
+WARNING 2024-12-20 04:11:15,943 log Not Found: /health/
+WARNING 2024-12-20 04:11:46,041 log Not Found: /health/
+WARNING 2024-12-20 04:12:16,104 log Not Found: /health/
+WARNING 2024-12-20 04:12:46,172 log Not Found: /health/
+WARNING 2024-12-20 04:13:16,232 log Not Found: /health/
+INFO 2024-12-20 04:14:31,710 autoreload Watching for file changes with StatReloader
+WARNING 2024-12-20 04:14:44,206 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-20 04:14:44,395 log Bad Request: /api/auth/login/
+INFO 2024-12-20 04:15:31,331 autoreload Watching for file changes with StatReloader
+WARNING 2024-12-20 04:16:05,417 log Unauthorized: /api/auth/csrf/
+INFO 2024-12-20 04:16:06,074 email_service Email sent successfully to adanhermes23@gmail.com. MessageId: 01000193e247a3a3-0f2b780b-1f9f-4a12-979a-d53ead5eef76-000000
+WARNING 2024-12-20 04:23:29,348 log Unauthorized: /api/auth/csrf/
+INFO 2024-12-20 04:23:30,002 email_service Email sent successfully to hermesaguilar@icloud.com. MessageId: 01000193e24e69cc-00462db8-20b1-481a-97c8-89d58384e8fc-000000

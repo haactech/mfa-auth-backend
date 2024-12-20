@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Two-Factor Authentication Enabled</title>
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+    <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
+        <h2>Two-Factor Authentication Enabled</h2>
+        <p>Hi {{ user.username }},</p>
+        <p>Two-factor authentication has been successfully enabled for your account.</p>
+        
+        <p>Your account is now more secure! Remember to:</p>
+        <ul style="margin: 20px 0;">
+            <li>Keep your authentication app safe</li>
+            <li>Store your backup codes in a secure location</li>
+            <li>Never share your verification codes with anyone</li>
+        </ul>
+        
+        <p>You can manage your security settings here:</p>
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="{{ security_url }}" 
+               style="background-color: #9747FF; color: white; padding: 12px 30px; 
+                      text-decoration: none; border-radius: 5px; display: inline-block;">
+                Security Settings
+            </a>
+        </div>
+        
+        <p>If you didn't enable two-factor authentication, please contact us immediately.</p>
+        
+        <hr style="border: 1px solid #eee; margin: 30px 0;">
+        <p style="color: #666; font-size: 12px;">
+            This is a security notification. Please do not reply to this email.
+        </p>
+    </div>
+</body>
+</html>

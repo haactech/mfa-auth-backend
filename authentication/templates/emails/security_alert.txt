@@ -1,0 +1,22 @@
+Security Alert - {{ site_name }}
+
+Hi {{ user.username }},
+
+We detected a security event on your account:
+
+Alert Type: {{ alert_type }}
+{% if details.ip_address %}IP Address: {{ details.ip_address }}{% endif %}
+{% if details.location %}Location: {{ details.location }}{% endif %}
+{% if details.device %}Device: {{ details.device }}{% endif %}
+{% if details.timestamp %}Time: {{ details.timestamp }}{% endif %}
+
+If this was not you, please take immediate action:
+1. Change your password immediately
+2. Enable two-factor authentication if not already enabled
+3. Review your recent account activity
+4. Contact support if you need assistance
+
+Review your account activity here: {{ security_url }}
+
+---
+This is an important security notification. Please do not reply to this email.
