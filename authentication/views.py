@@ -2,7 +2,7 @@ from rest_framework import viewsets, status, generics
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, authenticate, login
 from django.db import transaction
 from rest_framework_simplejwt.tokens import RefreshToken
 from .services.email_service import EmailService
@@ -85,7 +85,23 @@ class LoginView(generics.GenericAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         
-        user = serializer.validated_data['user']
+        user = authenticate(
+            username=serializer.validated_data['username'],
+            password=serializer.validated_data['password']
+        )
+        
+        if not user:
+            return Response(
+                {'error': 'Invalid credentials'},
+                status=status.HTTP_401_UNAUTHORIZED
+            )
+            
+        if not user.is_active:
+            return Response(
+                {'error': 'Please verify your email before logging in'},
+                status=status.HTTP_403_FORBIDDEN
+            )
+
         user.refresh_from_db()
 
         # Crear sesión temporal
@@ -294,6 +310,7 @@ class SecurityAlertViewSet(viewsets.ReadOnlyModelViewSet):
 
 @ensure_csrf_cookie
 @api_view(['GET'])
+@permission_classes([AllowAny])
 def get_csrf_token(request):
     token = get_token(request)
     return Response({'csrfToken': token})

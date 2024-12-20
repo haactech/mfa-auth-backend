@@ -105,3 +105,76 @@ INFO 2024-12-20 16:38:18,344 autoreload /Users/hermesadanaguilarcamacho/developm
 INFO 2024-12-20 16:38:18,628 autoreload Watching for file changes with StatReloader
 INFO 2024-12-20 16:38:22,962 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/core/views.py changed, reloading.
 INFO 2024-12-20 16:38:23,169 autoreload Watching for file changes with StatReloader
+WARNING 2024-12-20 20:01:11,046 log Unauthorized: /api/auth/csrf/
+INFO 2024-12-20 20:01:11,745 email_service Email sent successfully to adanhermes23@gmail.com. MessageId: 01000193e5a8e5f5-5e779daf-67e9-425e-a07b-cd55d024bbab-000000
+WARNING 2024-12-20 20:02:01,036 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-20 20:02:01,197 log Bad Request: /api/auth/login/
+WARNING 2024-12-20 20:02:13,925 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-20 20:02:14,106 log Bad Request: /api/auth/login/
+WARNING 2024-12-20 20:02:33,292 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-20 20:02:33,475 log Bad Request: /api/auth/login/
+WARNING 2024-12-20 20:02:39,554 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-20 20:02:39,726 log Bad Request: /api/auth/login/
+WARNING 2024-12-20 20:04:42,496 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-20 20:04:42,656 log Bad Request: /api/auth/login/
+WARNING 2024-12-20 20:05:06,585 log Unauthorized: /api/auth/csrf/
+INFO 2024-12-20 20:05:07,204 email_service Email sent successfully to adanhermes23@gmail.com. MessageId: 01000193e5ac7dad-fdeae035-518c-4ccf-9aa3-c2aebe45dde5-000000
+WARNING 2024-12-20 20:05:27,727 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-20 20:05:27,905 log Bad Request: /api/auth/login/
+WARNING 2024-12-20 20:05:55,832 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-20 20:05:56,015 log Bad Request: /api/auth/login/
+WARNING 2024-12-20 20:07:05,770 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-20 20:07:05,955 log Bad Request: /api/auth/login/
+WARNING 2024-12-20 20:07:06,793 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-20 20:07:06,970 log Bad Request: /api/auth/login/
+WARNING 2024-12-20 20:07:55,441 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-20 20:07:55,621 log Bad Request: /api/auth/login/
+WARNING 2024-12-20 20:08:11,210 log Not Found: /
+WARNING 2024-12-20 20:08:11,286 log Not Found: /favicon.ico
+INFO 2024-12-20 22:11:58,661 autoreload Watching for file changes with StatReloader
+INFO 2024-12-20 22:14:37,894 autoreload Watching for file changes with StatReloader
+WARNING 2024-12-20 22:14:48,750 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-20 22:22:45,241 log Unauthorized: /api/auth/csrf/
+INFO 2024-12-20 22:22:45,973 email_service Email sent successfully to adanhermes23@gmail.com. MessageId: 01000193e62a8281-8617fa5a-79a7-461e-86af-fb172a2b73d6-000000
+WARNING 2024-12-20 22:23:11,429 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-20 22:23:11,623 log Bad Request: /api/auth/login/
+INFO 2024-12-20 22:28:07,009 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/authentication/views.py changed, reloading.
+INFO 2024-12-20 22:28:07,276 autoreload Watching for file changes with StatReloader
+WARNING 2024-12-20 22:28:14,600 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-20 22:28:14,788 log Bad Request: /api/auth/login/
+WARNING 2024-12-20 22:28:41,005 log Unauthorized: /api/auth/csrf/
+INFO 2024-12-20 22:28:41,722 email_service Email sent successfully to adanhermes23@gmail.com. MessageId: 01000193e62ff018-2b11d81b-5dc3-4bc8-b5d5-cbf32d4d1680-000000
+WARNING 2024-12-20 22:29:00,475 log Unauthorized: /api/auth/csrf/
+WARNING 2024-12-20 22:29:00,658 log Bad Request: /api/auth/login/
+INFO 2024-12-20 22:30:10,967 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/authentication/views.py changed, reloading.
+INFO 2024-12-20 22:30:11,249 autoreload Watching for file changes with StatReloader
+INFO 2024-12-20 22:39:21,957 autoreload Watching for file changes with StatReloader
+INFO 2024-12-20 22:40:06,630 email_service Email sent successfully to adanhermes23@gmail.com. MessageId: 01000193e63a6397-1604fe25-2230-4d3d-8c7a-1868ba03dc8e-000000
+WARNING 2024-12-20 22:40:27,185 log Bad Request: /api/auth/login/
+WARNING 2024-12-20 22:42:21,565 log Bad Request: /api/auth/login/
+WARNING 2024-12-20 22:48:24,641 log Bad Request: /api/auth/verify-email/5567f951-d4de-4fef-bce5-35ffbca08b55/
+ERROR 2024-12-20 22:49:03,812 log Internal Server Error: /api/auth/login/
+Traceback (most recent call last):
+  File "/Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/venv/lib/python3.9/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/venv/lib/python3.9/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/venv/lib/python3.9/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/venv/lib/python3.9/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/venv/lib/python3.9/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/venv/lib/python3.9/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/authentication/views.py", line 88, in post
+    user = authenticate(
+NameError: name 'authenticate' is not defined
+INFO 2024-12-20 22:50:21,761 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/authentication/views.py changed, reloading.
+INFO 2024-12-20 22:50:22,057 autoreload Watching for file changes with StatReloader
+INFO 2024-12-20 22:50:51,329 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/authentication/views.py changed, reloading.
+INFO 2024-12-20 22:50:51,534 autoreload Watching for file changes with StatReloader
