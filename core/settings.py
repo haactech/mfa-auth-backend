@@ -163,9 +163,8 @@ SIMPLE_JWT = {
 }
 
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost:5173']  # Tu frontend
-CSRF_COOKIE_SECURE = False  # Cambiar a True en producción
-CSRF_COOKIE_HTTPONLY = False  # Necesario para que JS pueda leer la cookie
+CSRF_TRUSTED_ORIGINS = ['http://localhost:5173',"http://web-app-mfa.s3-website-us-east-1.amazonaws.com"]
+CSRF_COOKIE_HTTPONLY = False 
 CSRF_COOKIE_SAMESITE = 'Lax'
 CSRF_USE_SESSIONS = False
 CSRF_COOKIE_NAME = 'csrftoken'
@@ -176,6 +175,7 @@ CSRF_HEADER_NAME = 'HTTP_X_CSRFTOKEN'
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "http://web-app-mfa.s3-website-us-east-1.amazonaws.com"
 ]
 CORS_EXPOSE_HEADERS = ['Content-Type', 'X-CSRFToken']
 
