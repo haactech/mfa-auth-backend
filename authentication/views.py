@@ -16,7 +16,6 @@ from .models import (
     AuthenticationSession, 
     TrustedDevice, 
     SecurityAlert,
-    MFAProfile,
     EmailVerification
 )
 from .serializers import (

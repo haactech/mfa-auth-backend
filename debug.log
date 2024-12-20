@@ -68,3 +68,40 @@ INFO 2024-12-20 04:16:06,074 email_service Email sent successfully to adanhermes
 WARNING 2024-12-20 04:23:29,348 log Unauthorized: /api/auth/csrf/
 INFO 2024-12-20 04:23:30,002 email_service Email sent successfully to hermesaguilar@icloud.com. MessageId: 01000193e24e69cc-00462db8-20b1-481a-97c8-89d58384e8fc-000000
 INFO 2024-12-20 05:08:00,573 autoreload Watching for file changes with StatReloader
+WARNING 2024-12-20 16:28:22,319 log Not Found: /health/
+INFO 2024-12-20 16:29:25,246 autoreload Watching for file changes with StatReloader
+INFO 2024-12-20 16:29:40,829 autoreload Watching for file changes with StatReloader
+WARNING 2024-12-20 16:29:55,250 log Not Found: /health/
+INFO 2024-12-20 16:30:05,846 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/authentication/urls.py changed, reloading.
+INFO 2024-12-20 16:30:06,125 autoreload Watching for file changes with StatReloader
+WARNING 2024-12-20 16:30:08,579 log Not Found: /health/
+WARNING 2024-12-20 16:30:36,064 log Unauthorized: /api/auth/health/
+INFO 2024-12-20 16:31:44,672 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/authentication/urls.py changed, reloading.
+INFO 2024-12-20 16:31:44,971 autoreload Watching for file changes with StatReloader
+INFO 2024-12-20 16:31:55,496 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/authentication/views.py changed, reloading.
+INFO 2024-12-20 16:31:55,776 autoreload Watching for file changes with StatReloader
+INFO 2024-12-20 16:32:00,064 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/authentication/views.py changed, reloading.
+INFO 2024-12-20 16:32:00,264 autoreload Watching for file changes with StatReloader
+INFO 2024-12-20 16:32:07,643 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/authentication/urls.py changed, reloading.
+INFO 2024-12-20 16:32:07,901 autoreload Watching for file changes with StatReloader
+INFO 2024-12-20 16:34:37,555 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/authentication/views.py changed, reloading.
+INFO 2024-12-20 16:34:37,851 autoreload Watching for file changes with StatReloader
+INFO 2024-12-20 16:35:18,492 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/core/urls.py changed, reloading.
+INFO 2024-12-20 16:35:18,757 autoreload Watching for file changes with StatReloader
+INFO 2024-12-20 16:36:09,644 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/core/urls.py changed, reloading.
+INFO 2024-12-20 16:36:09,911 autoreload Watching for file changes with StatReloader
+WARNING 2024-12-20 16:36:17,235 log Unauthorized: /health/
+INFO 2024-12-20 16:37:04,164 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/core/urls.py changed, reloading.
+INFO 2024-12-20 16:37:04,443 autoreload Watching for file changes with StatReloader
+INFO 2024-12-20 16:37:05,671 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/core/urls.py changed, reloading.
+INFO 2024-12-20 16:37:05,837 autoreload Watching for file changes with StatReloader
+INFO 2024-12-20 16:37:13,227 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/core/urls.py changed, reloading.
+INFO 2024-12-20 16:37:13,458 autoreload Watching for file changes with StatReloader
+INFO 2024-12-20 16:37:19,691 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/core/urls.py changed, reloading.
+INFO 2024-12-20 16:37:19,893 autoreload Watching for file changes with StatReloader
+INFO 2024-12-20 16:37:23,230 autoreload Watching for file changes with StatReloader
+WARNING 2024-12-20 16:37:25,183 log Unauthorized: /health/
+INFO 2024-12-20 16:38:18,344 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/core/views.py changed, reloading.
+INFO 2024-12-20 16:38:18,628 autoreload Watching for file changes with StatReloader
+INFO 2024-12-20 16:38:22,962 autoreload /Users/hermesadanaguilarcamacho/development/personal/mfa-auth-backend/core/views.py changed, reloading.
+INFO 2024-12-20 16:38:23,169 autoreload Watching for file changes with StatReloader
