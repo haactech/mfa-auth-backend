@@ -163,7 +163,7 @@ SIMPLE_JWT = {
 }
 
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost:5173',"http://web-app-mfa.s3-website-us-east-1.amazonaws.com"]
+CSRF_TRUSTED_ORIGINS = ['http://localhost:5173',"api.hermesagc.com"]
 CSRF_COOKIE_HTTPONLY = False 
 CSRF_COOKIE_SAMESITE = 'Lax'
 CSRF_USE_SESSIONS = False
@@ -175,7 +175,7 @@ CSRF_HEADER_NAME = 'HTTP_X_CSRFTOKEN'
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    "http://web-app-mfa.s3-website-us-east-1.amazonaws.com"
+    "http://api.hermesagc.com"
 ]
 CORS_EXPOSE_HEADERS = ['Content-Type', 'X-CSRFToken']
 
@@ -241,7 +241,7 @@ AWS_SES_REGION = get_env_variable('AWS_SES_REGION', 'us-east-1')
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 DEFAULT_FROM_EMAIL = get_env_variable('DEFAULT_FROM_EMAIL', 'noreply@yourdomain.com')
 SITE_NAME = get_env_variable('SITE_NAME', 'Your Application Name')
-FRONTEND_URL = get_env_variable('FRONTEND_URL', 'http://localhost:3000')
+FRONTEND_URL = get_env_variable('FRONTEND_URL', 'http://localhost:5173')
 
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
