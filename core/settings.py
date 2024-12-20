@@ -38,7 +38,7 @@ SECRET_KEY = 'django-insecure-*_y^icn=*hrv%nh*(x0fr=s5v7^(5x!njgm3@gls2y_@x=d%3s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '10.0.10.181','MFA-Django-ALB-1458001622.us-east-1.elb.amazonaws.com','54.172.155.213']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '10.0.10.181','http://api.hermesagc.com','54.172.155.213']
 
 # Application definition
 
@@ -163,7 +163,7 @@ SIMPLE_JWT = {
 }
 
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost:5173',"api.hermesagc.com"]
+CSRF_TRUSTED_ORIGINS = ['http://localhost:5173',"http://api.hermesagc.com"]
 CSRF_COOKIE_HTTPONLY = False 
 CSRF_COOKIE_SAMESITE = 'Lax'
 CSRF_USE_SESSIONS = False
