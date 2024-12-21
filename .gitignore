@@ -1,2 +1,5 @@
 venv
 .env
+db.sqlite3
+debug.log
+deploy-ec2.sh
