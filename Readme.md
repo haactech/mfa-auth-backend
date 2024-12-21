@@ -90,9 +90,6 @@ Tambien puedes usar Docker si eres de los cool:
 ```bash
 # Para desarrollo
 docker-compose up --build
-
-# Para produccion (usa el archivo de producción)
-docker-compose -f docker-compose.prod.yml up --build
 ```
 
 ## 🚀 Ambiente de Producción
